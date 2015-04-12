@@ -1,0 +1,35 @@
+<head>
+    <title>famcon</title>
+</head>
+
+<body>
+<h1>Welcome to FAMCON!</h1>
+
+<div>
+    <ul>
+        {{#each coords}}
+        {{> coord}}
+        {{/each}}
+    </ul>
+</div>
+<button onclick="getLocation()">Try it!</button>
+<p id="demo"></p>
+<script>
+    var x = document.getElementById("demo");
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+    function showPosition(position) {
+        x.innerHTML = "(Latitude, Longitude, Accuracy, Timestamp) = (" + position.coords.latitude + "," + position.coords.longitude + "," + position.coords.accuracy + "," + position.timestamp + ")";
+    }
+</script>
+
+</body>
+
+<template name="coord">
+    <li>{{pos}}</li>
+</template>
