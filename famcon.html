@@ -12,7 +12,8 @@
         {{/each}}
     </ul>
 </div>
-<button onclick="getLocation()">Try it!</button>
+<button class="butt1">Try it!</button>
+<!--
 <p id="demo"></p>
 <script>
     var x = document.getElementById("demo");
@@ -27,9 +28,14 @@
         x.innerHTML = "(Latitude, Longitude, Accuracy, Timestamp) = (" + position.coords.latitude + "," + position.coords.longitude + "," + position.coords.accuracy + "," + position.timestamp + ")";
     }
 </script>
-
+-->
 </body>
 
 <template name="coord">
-    <li>{{pos}}</li>
+    <li>
+        <!--
+        {{timestamp}},{{coords}}
+        -->
+        {{accuracy}},{{longitude}},{{latitude}}
+    </li>
 </template>
