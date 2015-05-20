@@ -7,10 +7,14 @@
 {{> userprofile}}
 
 {{#if currentUser}}
+<div class="map-container">
+    {{> googleMap name="exampleMap" options=exampleMapOptions}}
+</div>
+
 <div>
     <ul>
         {{#each coords}}
-            <p>{{> coord}}</p>
+        <p>{{> coord}}</p>
         {{/each}}
     </ul>
 </div>
@@ -28,8 +32,11 @@
         -->
         {{longitude}},{{latitude}}
     </li>
-/</template>
+    /
+</template>
 
 <template name="userprofile">
     <p>Logging in as {{email}}</p>
 </template>
+
+
