@@ -4,38 +4,32 @@
 
 <body>
 <h1>Welcome to FAMCON!</h1>
+{{> userprofile}}
 
+{{#if currentUser}}
 <div>
     <ul>
         {{#each coords}}
-        {{> coord}}
+            <p>{{> coord}}</p>
         {{/each}}
     </ul>
 </div>
 <button class="butt1">Try it!</button>
-<!--
-<p id="demo"></p>
-<script>
-    var x = document.getElementById("demo");
-    function getLocation() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } else {
-            x.innerHTML = "Geolocation is not supported by this browser.";
-        }
-    }
-    function showPosition(position) {
-        x.innerHTML = "(Latitude, Longitude, Accuracy, Timestamp) = (" + position.coords.latitude + "," + position.coords.longitude + "," + position.coords.accuracy + "," + position.timestamp + ")";
-    }
-</script>
--->
+{{else}}
+{{> loginButtons}}
+{{/if}}
 </body>
 
 <template name="coord">
     <li>
         <!--
         {{timestamp}},{{coords}}
-        -->
         {{accuracy}},{{longitude}},{{latitude}}
+        -->
+        {{longitude}},{{latitude}}
     </li>
+/</template>
+
+<template name="userprofile">
+    <p>Logging in as {{email}}</p>
 </template>

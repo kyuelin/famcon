@@ -20,11 +20,15 @@ if (Meteor.isClient) {
             + position.coords.longitude + ","
             + position.coords.accuracy + ","
             + position.timestamp + ")";
+        var pos = {
+          "latitude" : position.coords.latitude,
+          "longitude": position.coords.longitude
+        }
         Coords.insert(
-          //pos: pos,
+            pos
           //createdAt: new Date(),
           //co: position.coords
-          position.coords
+          //position.coords
           //position
         );
       }
@@ -34,13 +38,21 @@ if (Meteor.isClient) {
       getLocation();
       return false;
     }
-  })
+  });
+
+  Template.userprofile.helpers({
+    email: function(){
+//      return Meteor.user() && Meteor.user().username;
+      return Meteor.user().emails[0].address;
+    }
+  });
 }
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
   });
+
 }
 
 
